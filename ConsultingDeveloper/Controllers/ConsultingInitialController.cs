@@ -1,3 +1,4 @@
+using ConsultingDeveloperModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultingDeveloper.Controllers;
@@ -21,11 +22,6 @@ public class ConsultingInitialController : ControllerBase
         return req.valor.ToString();
     }
 
-    [HttpGet]
-    [Route("Teste3")]
-    public string Teste3([FromBody]Request req){
-        return req.valor.ToString();
-    }
     [HttpGet]
     [Route("Teste2")]
     public Response Teste2([FromBody]Request req){
