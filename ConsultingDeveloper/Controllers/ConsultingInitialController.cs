@@ -16,9 +16,14 @@ public class ConsultingInitialController : ControllerBase
 
 
     [HttpGet]
-     [Route("Teste1")]
+    [Route("Teste1")]
     public string Teste1([FromBody]Request req){
         return req.valor.ToString();
     }
 
+    [HttpGet]
+    [Route("Teste3")]
+    public string Teste3([FromBody]Request req){
+        return req.valor.ToString();
+    }
 }
