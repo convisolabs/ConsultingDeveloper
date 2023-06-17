@@ -18,7 +18,9 @@ public class ConsultingInitialController : ControllerBase
     [HttpGet]
      [Route("Teste1")]
     public string Teste1([FromBody]Request req){
+        var teste = "";
         return req.valor.ToString();
+        
     }
 
 }
