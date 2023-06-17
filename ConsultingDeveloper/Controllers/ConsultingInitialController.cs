@@ -19,7 +19,6 @@ public class ConsultingInitialController : ControllerBase
      [Route("Teste1")]
     public string Teste1([FromBody]Request req){
         return req.valor.ToString();
-        
     }
 
 }
