@@ -17,4 +17,11 @@ public class ConsultingInitialController : ControllerBase
         return $"{euroFormatado} Euros equivale em Reais a {euro.ConverterEuroEmReal(euro.euro):C2}";
     }
 
+    [HttpGet]
+    [Route("reajuste-salario")]
+    public ActionResult<string> ReajusteSalario([FromBody] SalarioAtual salarioAtual)
+    {
+        return $"O valor do salário com reajuste é {salarioAtual.salarioReajustado(salarioAtual.Salario, salarioAtual.Reajuste):C2} reais.";
+    }
+
 }
