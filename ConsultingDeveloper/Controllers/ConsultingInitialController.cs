@@ -1,5 +1,6 @@
 using ConsultingDeveloperModel;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace ConsultingDeveloper.Controllers;
 
@@ -12,7 +13,8 @@ public class ConsultingInitialController : ControllerBase
     [Route("euro-real")] 
     public ActionResult<string> EuroReal([FromBody] Euro euro)
     {
-        return $"Resultado: {euro.ConverterEuroEmReal(euro.euro):C2}";
+        var euroFormatado = euro.euro.ToString("C",new CultureInfo("fr-FR"));
+        return $"{euroFormatado} Euros equivale em Reais a {euro.ConverterEuroEmReal(euro.euro):C2}";
     }
 
 }
