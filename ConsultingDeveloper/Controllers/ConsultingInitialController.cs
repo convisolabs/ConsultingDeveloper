@@ -8,27 +8,11 @@ namespace ConsultingDeveloper.Controllers;
 public class ConsultingInitialController : ControllerBase
 {
 
-    private readonly ILogger<ConsultingInitialController> _logger;
-
-    public ConsultingInitialController(ILogger<ConsultingInitialController> logger)
+    [HttpGet]
+    [Route("euro-real")] 
+    public ActionResult<string> EuroReal([FromBody] Euro euro)
     {
-        _logger = logger;
-    }
-
-
-    [HttpGet]
-    [Route("Teste1")]
-    public string Teste1([FromBody]Request req){
-        return req.valor.ToString();
-    }
-
-    [HttpGet]
-    [Route("Teste2")]
-    public Response Teste2([FromBody]Request req){
-        Response teste2 = new Response();
-        teste2.Id = 0;
-        teste2.Nome = "teste2";
-        return teste2;
+        return $"Resultado: {euro.ConverterEuroEmReal(euro.euro):C2}";
     }
 
 }
