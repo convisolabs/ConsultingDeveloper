@@ -15,4 +15,8 @@
     <ProjectReference Include="..\ConsultingDeveloperModel\ConsultingDeveloperModel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

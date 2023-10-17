@@ -1,5 +1,6 @@
 using ConsultingDeveloperModel;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace ConsultingDeveloper.Controllers;
 
@@ -8,27 +9,19 @@ namespace ConsultingDeveloper.Controllers;
 public class ConsultingInitialController : ControllerBase
 {
 
-    private readonly ILogger<ConsultingInitialController> _logger;
-
-    public ConsultingInitialController(ILogger<ConsultingInitialController> logger)
+    [HttpGet]
+    [Route("euro-real")] 
+    public ActionResult<string> EuroReal([FromBody] Euro euro)
     {
-        _logger = logger;
-    }
-
-
-    [HttpGet]
-    [Route("Teste1")]
-    public string Teste1([FromBody]Request req){
-        return req.valor.ToString();
+        var euroFormatado = euro.euro.ToString("C",new CultureInfo("fr-FR"));
+        return $"{euroFormatado} Euros equivale em Reais a {euro.ConverterEuroEmReal(euro.euro):C2}";
     }
 
     [HttpGet]
-    [Route("Teste2")]
-    public Response Teste2([FromBody]Request req){
-        Response teste2 = new Response();
-        teste2.Id = 0;
-        teste2.Nome = "teste2";
-        return teste2;
+    [Route("reajuste-salario")]
+    public ActionResult<string> ReajusteSalario([FromBody] SalarioAtual salarioAtual)
+    {
+        return $"O valor do salário com reajuste é {salarioAtual.salarioReajustado(salarioAtual.Salario, salarioAtual.Reajuste):C2} reais.";
     }
 
 }
